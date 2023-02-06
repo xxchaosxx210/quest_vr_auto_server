@@ -7,4 +7,4 @@ deta = Deta(PROJECT_KEY)
 
 db = deta.Base("questVRAutoServerBase")
 
-db.put({"name": "", "magnet": "", "version": 0.0, "filesize": 0})
+# db.put({"name": "", "magnet": "", "version": 0.0, "filesize": 0})
