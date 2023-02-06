@@ -1,18 +1,10 @@
-from sqlalchemy import create_engine
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy.orm import sessionmaker
+from deta import Deta
 
-SQL_DATABASE_PATH = "postgresql://postgres:Ka1NEo05x@localhost/q2g"
 
-engine = create_engine(SQL_DATABASE_PATH)
+PROJECT_KEY = "a098is8y_ahqJ4KZ1uawkftgZyEsRS3P9X8yKUDcg"
 
-SessionLocal = sessionmaker(autoflush=False, autocommit=False, bind=engine)
+deta = Deta(PROJECT_KEY)
 
-Base = declarative_base()
+db = deta.Base("questVRAutoServerBase")
 
-def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
+db.put({"name": "", "magnet": "", "version": 0.0, "filesize": 0})

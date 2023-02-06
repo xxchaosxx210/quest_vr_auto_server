@@ -1,11 +1,16 @@
+# endpoint https://6vppvi.deta.dev/
+
 import fastapi
+import database
 
 from routers import games
 
-import database
-
-database.Base.metadata.create_all(bind=database.engine)
 
 app = fastapi.FastAPI()
 
 app.include_router(games.router)
+
+
+@app.get("/")
+def index():
+    return {"detail": "this worked"}
