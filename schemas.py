@@ -3,18 +3,18 @@ from typing import List
 
 
 class Game(BaseModel):
-
     name: str
     magnet: str
     version: float
     filesize: int
+    date_added: float
+    id: str
 
     class Config:
         orm_mode = True
 
 
 class GamesList(BaseModel):
-
     games: List[Game]
 
     class Config:
