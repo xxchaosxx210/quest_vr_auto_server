@@ -4,6 +4,7 @@ from typing import List
 
 class Game(BaseModel):
     name: str
+    display_name: str
     magnet: str
     version: float
     filesize: int
