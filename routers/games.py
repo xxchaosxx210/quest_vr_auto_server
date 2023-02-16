@@ -1,7 +1,7 @@
 import fastapi
 import schemas
 
-from database import db
+from database import base_games
 
 router = fastapi.APIRouter(prefix="/games", tags=["Games"])
 
@@ -13,6 +13,6 @@ def get_games() -> dict:
     def get_game_schema(game: dict):
         return schemas.Game(**game)
 
-    response = db.fetch()
+    response = base_games.fetch()
     games = list(map(get_game_schema, response.items))
     return {"games": games}
