@@ -10,7 +10,7 @@ class Game(BaseModel):
     magnet: str
     version: float
     filesize: int
-    date_added: float
+    date_added: int
     id: str
 
     class Config:
