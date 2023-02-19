@@ -1,18 +1,21 @@
 import fastapi
+from fastapi import Depends
 from pydantic.error_wrappers import ValidationError
 
 import schemas
 
-from database import base_logs
+import database
 
 from utils import create_timestamp
+
+import routers.users as users
 
 
 router = fastapi.APIRouter(prefix="/logs")
 
 
 @router.post("", status_code=fastapi.status.HTTP_200_OK)
-def add_error_to_logs(error: schemas.ErrorRequest):
+def add_log(error: schemas.ErrorRequest):
     timestamp = create_timestamp()
     try:
         error_validator = schemas.Error(
@@ -24,4 +27,12 @@ def add_error_to_logs(error: schemas.ErrorRequest):
         )
     except ValidationError:
         raise fastapi.HTTPException("Error Validating response")
-    base_logs.put(data=error_validator.dict())
+    database.base_logs.put(data=error_validator.dict())
+
+
+@router.get("", status_code=fastapi.status.HTTP_200_OK)
+async def get_logs(
+    current_user: schemas.User = Depends(users.get_current_active_admin),
+):
+    response = database.base_logs.fetch()
+    return {"logs": response.items}

@@ -68,3 +68,23 @@ class ErrorLogs(BaseModel):
 
     class Config:
         orm_mode = True
+
+
+class User(BaseModel):
+    email: str
+    is_admin: bool = False
+    is_user: bool = True
+    disabled: bool | None = None
+
+
+class UserInDB(User):
+    password: str
+
+
+class Token(BaseModel):
+    access_token: str
+    token_type: str
+
+
+class TokenData(BaseModel):
+    username: str | None = None

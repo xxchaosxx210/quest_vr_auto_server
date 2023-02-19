@@ -8,3 +8,5 @@ deta = Deta(PROJECT_KEY)
 base_games = deta.Base("questVRAutoServerBase")
 
 base_logs = deta.Base("questVRErrorLogs")
+
+base_users = deta.Base("questVRUsersBase")
