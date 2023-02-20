@@ -35,4 +35,5 @@ async def get_logs(
     current_user: schemas.User = Depends(users.get_current_active_admin),
 ):
     response = database.base_logs.fetch()
-    return {"logs": response.items}
+    error_logs = list(map(lambda error_log: schemas.Error(**error_log), response.items))
+    return {"logs": error_logs}

@@ -1,4 +1,4 @@
-from pydantic import BaseModel, constr, validator
+from pydantic import BaseModel, constr, validator, EmailStr
 from typing import List
 
 from uuid import UUID, uuid4
@@ -71,7 +71,8 @@ class ErrorLogs(BaseModel):
 
 
 class User(BaseModel):
-    email: str
+    email: EmailStr
+    date_created: float | None = None
     is_admin: bool = False
     is_user: bool = True
     disabled: bool | None = None
@@ -84,7 +85,8 @@ class UserInDB(User):
 class Token(BaseModel):
     access_token: str
     token_type: str
+    user: User
 
 
 class TokenData(BaseModel):
-    username: str | None = None
+    username: EmailStr | None = None

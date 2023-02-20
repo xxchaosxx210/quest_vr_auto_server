@@ -15,7 +15,7 @@ import database
 # run openssl rand -hex 32
 SECRET_KEY = "2d08be3f8eb7cb41b8419df4bfc757c9202836aa93e4146f8445c904cf0ba0ac"
 ALGORITHM = "HS256"
-ACCESS_TOKEN_EXPIRE_MINUTES = 1
+ACCESS_TOKEN_EXPIRE_MINUTES = 60
 
 pass_ctx = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
@@ -227,7 +227,14 @@ async def login(form_data: OAuth2PasswordRequestForm = Depends()):
         raise fastapi.HTTPException(
             fastapi.status.HTTP_500_INTERNAL_SERVER_ERROR, err.__str__()
         )
-    return {"access_token": access_token, "token_type": "bearer"}
+    # remove the password when returning
+    user = schemas.User(**user.dict())
+    return_value = {
+        "access_token": access_token,
+        "token_type": "bearer",
+        "user": user,
+    }
+    return return_value
 
 
 @router.get("/token")
@@ -245,3 +252,17 @@ async def generate_password_hash(
     """
     hash = get_password_hash(plain_password)
     return {"password": plain_password, "hash": hash}
+
+
+@router.get("/info")
+async def get_user_info(current_user: schemas.User = Depends(get_current_active_user)):
+    """get the currently active user information
+
+    Raises:
+        401 if not valid
+
+    Args:
+        current_user (schemas.User, optional): _description_. Defaults to Depends(get_current_active_user).
+    """
+
+    return current_user
