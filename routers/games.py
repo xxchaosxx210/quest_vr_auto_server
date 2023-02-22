@@ -29,6 +29,19 @@ async def get_games():
     return games
 
 
+@router.put("/update/{key}", status_code=fastapi.status.HTTP_200_OK)
+async def update_game(
+    game: schemas.GameUpdateRequest,
+    key: str,
+    current_admin: schemas.User = fastapi.Depends(get_current_active_admin),
+):
+    # Cave Digger 2 - Dig Harder
+    try:
+        base_games.update(game.dict(exclude_unset=True), key=key)
+    except Exception as err:
+        raise fastapi.HTTPException(fastapi.status.HTTP_400_BAD_REQUEST, err.__str__())
+
+
 @router.get(
     "/search",
     status_code=fastapi.status.HTTP_200_OK,

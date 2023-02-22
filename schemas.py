@@ -22,6 +22,16 @@ class GameWithKey(Game):
     key: str
 
 
+class GameUpdateRequest(Game):
+    name: Optional[str]
+    display_name: Optional[str]
+    magnet: Optional[str]
+    version: Optional[float]
+    filesize: Optional[int]
+    date_added: Optional[int]
+    id: Optional[str]
+
+
 class GamesList(BaseModel):
     games: List[Game]
 
