@@ -1,5 +1,5 @@
 from pydantic import BaseModel, constr, validator, EmailStr
-from typing import List
+from typing import List, Optional
 
 from uuid import UUID, uuid4
 
@@ -11,10 +11,15 @@ class Game(BaseModel):
     version: float
     filesize: int
     date_added: int
+    # torrent_id
     id: str
 
     class Config:
         orm_mode = True
+
+
+class GameWithKey(Game):
+    key: str
 
 
 class GamesList(BaseModel):
@@ -22,6 +27,14 @@ class GamesList(BaseModel):
 
     class Config:
         orm_mode = True
+
+
+class SearchGameRequest(BaseModel):
+    key: Optional[str]
+    name: Optional[str]
+    display_name: Optional[str]
+    date_added: Optional[float]
+    id: Optional[str]
 
 
 class ErrorRequest(BaseModel):
