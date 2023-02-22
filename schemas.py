@@ -53,6 +53,7 @@ class ErrorRequest(BaseModel):
 
 
 class Error(BaseModel):
+    key: str
     type: str
     traceback: str
     exception: str
