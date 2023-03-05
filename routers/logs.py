@@ -16,21 +16,21 @@ router = fastapi.APIRouter(prefix="/logs")
 
 
 @router.post("", status_code=fastapi.status.HTTP_200_OK)
-def add_log(
-    error: schemas.ErrorRequest,
-    current_user: schemas.User = Depends(users.get_current_active_admin),
-):
+def add_log(error: schemas.ErrorRequest):
     timestamp = create_timestamp()
     try:
-        error_validator = schemas.Error(
+        error_validator = schemas.ErrorLog(
             type=error.type,
             traceback=error.traceback,
             exception=error.exception,
             uuid=error.uuid,
             date_added=timestamp,
         )
-    except ValidationError:
-        raise fastapi.HTTPException("Error Validating response")
+    except ValidationError as err:
+        raise fastapi.HTTPException(
+            status_code=fastapi.status.HTTP_400_BAD_REQUEST,
+            detail="Error validating the request",
+        )
     database.base_logs.put(data=error_validator.dict())
 
 
@@ -41,16 +41,22 @@ async def get_logs(
     limit: int = 1000,
     current_user: schemas.User = Depends(users.get_current_active_admin),
 ):
+    # grab the logs from the database
     response = database.base_logs.fetch(limit=limit)
-    error_logs = list(map(lambda error_log: schemas.Error(**error_log), response.items))
+    error_logs = list(
+        map(lambda error_log: schemas.ErrorLogResponse(**error_log), response.items)
+    )
+    # if no sort required then send
     if not sort_by and not order_by:
         return {"logs": error_logs}
+    # check which entry to order by
     if sort_by not in ["date_added"] and order_by not in ["asc", "desc"]:
         raise fastapi.HTTPException(
             status_code=fastapi.status.HTTP_400_BAD_REQUEST,
             detail="Incorrect Query",
         )
     reverse = True if order_by == "desc" else False
+    # sort the logs in either ascending or descending order
     error_logs = sorted(
         error_logs, key=lambda error_log: getattr(error_log, sort_by), reverse=reverse
     )
@@ -78,5 +84,5 @@ async def delete_log(
     if query_resp.count == 0:
         logs = []
     else:
-        logs = list(map(lambda log: schemas.Error(**log), query_resp.items))
+        logs = list(map(lambda log: schemas.ErrorLogResponse(**log), query_resp.items))
     return {"logs": logs}

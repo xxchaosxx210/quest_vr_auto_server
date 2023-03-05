@@ -75,8 +75,7 @@ class ErrorRequest(BaseModel):
         return str(uuid)
 
 
-class Error(BaseModel):
-    key: str
+class ErrorLog(BaseModel):
     type: str
     traceback: str
     exception: str
@@ -87,11 +86,8 @@ class Error(BaseModel):
         orm_mode = True
 
 
-class ErrorLogs(BaseModel):
-    errors: List[Error]
-
-    class Config:
-        orm_mode = True
+class ErrorLogResponse(ErrorLog):
+    key: str
 
 
 class User(BaseModel):
