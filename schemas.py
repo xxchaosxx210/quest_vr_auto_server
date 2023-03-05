@@ -74,6 +74,9 @@ class ErrorRequest(BaseModel):
             raise ValueError("invalid UUID")
         return str(uuid)
 
+    class Config:
+        allow_reuse = True
+
 
 class ErrorLog(BaseModel):
     type: str

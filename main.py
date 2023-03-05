@@ -1,4 +1,5 @@
 # endpoint https://6vppvi.deta.dev/
+# https://6vppvi.deta.dev/games
 
 import fastapi
 
