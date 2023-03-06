@@ -122,6 +122,8 @@ async def get_current_user(token: str = Depends(oauth2scheme)) -> schemas.UserIn
     except JWTError:
         raise credentials_exception
     # lookup the user from the database
+    if token_data.username is None:
+        raise credentials_exception
     try:
         user = get_user(username=token_data.username)
     except LookupError:
@@ -224,7 +226,7 @@ async def login(form_data: OAuth2PasswordRequestForm = Depends()) -> dict:
         dict: access_token, token_type, user: User
     """
     try:
-        user = authenticate_user(form_data.username, form_data.password)
+        user = authenticate_user(EmailStr(form_data.username), form_data.password)
     except (exceptions.AuthenticationError, LookupError):
         raise fastapi.HTTPException(
             fastapi.status.HTTP_401_UNAUTHORIZED,

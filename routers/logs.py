@@ -78,9 +78,12 @@ async def get_logs(
             detail="Incorrect Query",
         )
     reverse = True if order_by == "desc" else False
-    # sort the logs in either ascending or descending order
+
+    # sort the error logs by sort_by as the key if None then will be sorted by date_added
     error_logs = sorted(
-        error_logs, key=lambda error_log: getattr(error_log, sort_by), reverse=reverse
+        error_logs,
+        key=lambda error_log: getattr(error_log, sort_by or "date_added"),
+        reverse=reverse,
     )
     return {"logs": error_logs}
 

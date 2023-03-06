@@ -5,6 +5,7 @@ import schemas
 from database import base_games
 from utils import create_timestamp
 from routers.users import get_current_active_admin, get_current_user
+from pydantic import ValidationError
 
 router = fastapi.APIRouter(prefix="/games", tags=["Games"])
 
@@ -62,8 +63,15 @@ async def update_game(
         raise fastapi.HTTPException(
             fastapi.status.HTTP_404_NOT_FOUND, "Could not find entry in Base"
         )
-    game = schemas.GameWithKey(**base_response.items[0])
-    return game
+    try:
+        game = schemas.GameWithKey(**base_response.items[0])
+    except ValidationError:
+        raise fastapi.HTTPException(
+            fastapi.status.HTTP_500_INTERNAL_SERVER_ERROR,
+            "Validation Error sending new game data. Check the logs",
+        )
+    else:
+        return game
 
 
 @router.get(
