@@ -9,6 +9,7 @@ from jose import jwt, JWTError
 
 import schemas
 import database
+import exceptions
 
 
 # to get a random 32 bit encrypted key
@@ -47,34 +48,42 @@ def verify_password(plain_password: str, hash_password: str) -> bool:
     return pass_ctx.verify(plain_password, hash_password)
 
 
-def authenticate_user(username: str, password: str) -> schemas.User | None:
-    """checks the user exists and verifies the password
+def authenticate_user(username: str, password: str) -> schemas.User:
+    """authenticates the user by looking up the username in the database and then verifying the password
 
     Args:
-        username (str): the username to lookup in the database
-        password (str): the plain password to check
+        username (str): the username to search
+        password (str): the password to verify
+
+    Raises:
+        exceptions.AuthenticationError: if the username or password is incorrect
+        LookupError: if no user found
 
     Returns:
-        schemas.User | None:
+        schemas.User: the user object
     """
     user = get_user(username)
     if not user or not verify_password(password, user.password):
-        return None
+        raise exceptions.AuthenticationError("Incorrect username or password")
     return user
 
 
-def get_user(username: str) -> schemas.UserInDB | None:
-    """looks up the username in the database
+def get_user(username: str) -> schemas.UserInDB:
+    """
+    gets the user from the database
 
     Args:
         username (str): the username to search
 
+    Raises:
+        LookupError: if no user found
+
     Returns:
-        schemas.UserInDB | None:
+        schemas.UserInDB: the user object
     """
     db_response = database.base_users.fetch({"email": username})
     if db_response.count == 0:
-        return None
+        raise LookupError("No user found")
     # get the first item found in the database
     item = db_response.items[0]
     user = schemas.UserInDB(**item)
@@ -82,16 +91,17 @@ def get_user(username: str) -> schemas.UserInDB | None:
 
 
 async def get_current_user(token: str = Depends(oauth2scheme)) -> schemas.UserInDB:
-    """decodes the token string into a dict and returns UserInDB if validated
+    """
+    decodes the token string into a dict and returns UserInDB if validated
 
     Args:
-        token (str, optional): _description_. Defaults to Depends(oauth2scheme).
+        token (str, optional): _description_. token to be auth to Depends(oauth2scheme).
 
     Raises:
-        401: if any part of the decode and user lookup fails or returns None then a 401 unauthorized is raised
+        credentials_exception: raises a 401 if the token is invalid, expired or if the user is not found
 
     Returns:
-        schemas.UserInDB:
+        schemas.UserInDB: the user object
     """
     credentials_exception = fastapi.HTTPException(
         status_code=fastapi.status.HTTP_401_UNAUTHORIZED,
@@ -111,11 +121,12 @@ async def get_current_user(token: str = Depends(oauth2scheme)) -> schemas.UserIn
     except JWTError:
         raise credentials_exception
     # lookup the user from the database
-    user = get_user(username=token_data.username)
-    if user is None:
-        # couldnt find the user in the database
+    try:
+        user = get_user(username=token_data.username)
+    except LookupError:
         raise credentials_exception
-    return user
+    else:
+        return user
 
 
 async def get_current_active_user(
@@ -161,16 +172,17 @@ async def get_current_active_admin(
     return current_user
 
 
-def create_access_token(data: dict, expires_delta: datetime.timedelta | None = None):
-    """generates an access token with an optional expiration
+def create_access_token(data: dict, expires_delta: datetime.timedelta) -> str:
+    """
+    generates an access token with an optional expiration
     time by encoding a dictionary using the JSON Web Token (JWT) format and a secret key.
 
     Args:
         data (dict): adds the expiration time to the data dictionary
-        td (datetime.timedelta | None, optional): expiration time
+        td (datetime.timedelta): expiration time
 
     Returns:
-        str: _description_
+        str: the encoded JWT as the access token
     """
     # Make a copy of the data dictionary to prevent modifying the original data
     to_encode = data.copy()
@@ -197,21 +209,22 @@ router = fastapi.APIRouter(prefix="/users")
 @router.post(
     "/token", response_model=schemas.Token, status_code=fastapi.status.HTTP_200_OK
 )
-async def login(form_data: OAuth2PasswordRequestForm = Depends()):
-    """takes in the Oauth request password and username and checks if user and password matches
-    sets an expire time to the token
+async def login(form_data: OAuth2PasswordRequestForm = Depends()) -> dict:
+    """
+    logs in the user and returns a JWT token
 
     Args:
-        form_data (OAuth2PasswordRequestForm, optional): _description_. Defaults to Depends().
+        form_data (OAuth2PasswordRequestForm, optional): Defaults to Depends().
 
     Raises:
-        fastapi.HTTPException: raises a 401 if not authorized
+        fastapi.HTTPException: raises a 401 if the user could not be authenticated
 
     Returns:
-        dict: token string and token_type
+        dict: access_token, token_type, user: User
     """
-    user = authenticate_user(form_data.username, form_data.password)
-    if not user:
+    try:
+        user = authenticate_user(form_data.username, form_data.password)
+    except (exceptions.AuthenticationError, LookupError):
         raise fastapi.HTTPException(
             fastapi.status.HTTP_401_UNAUTHORIZED,
             detail="Could not validate credentials",

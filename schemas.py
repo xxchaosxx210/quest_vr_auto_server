@@ -30,7 +30,7 @@ class Game(BaseModel):
     magnet: str
     version: float
     filesize: int
-    date_added: int
+    date_added: float
     # torrent_id
     id: str
 
