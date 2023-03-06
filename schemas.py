@@ -31,7 +31,6 @@ class Game(BaseModel):
     version: float
     filesize: int
     date_added: float
-    # torrent_id
     id: str
 
 
@@ -47,6 +46,7 @@ class GameUpdateRequest(BaseModel):
     filesize: Optional[int]
     date_added: Optional[float]
     id: Optional[str]
+    key: Optional[str]
 
 
 class GamesList(BaseModel):

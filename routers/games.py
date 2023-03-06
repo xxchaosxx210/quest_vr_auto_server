@@ -64,14 +64,14 @@ async def update_game(
             fastapi.status.HTTP_404_NOT_FOUND, "Could not find entry in Base"
         )
     try:
-        game = schemas.GameWithKey(**base_response.items[0])
+        game_with_key = schemas.GameWithKey(**base_response.items[0])
     except ValidationError:
         raise fastapi.HTTPException(
             fastapi.status.HTTP_500_INTERNAL_SERVER_ERROR,
             "Validation Error sending new game data. Check the logs",
         )
     else:
-        return game
+        return game_with_key
 
 
 @router.get(
