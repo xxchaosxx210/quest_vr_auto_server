@@ -36,11 +36,26 @@ def add_log(error: schemas.ErrorRequest):
 
 @router.get("", status_code=fastapi.status.HTTP_200_OK)
 async def get_logs(
-    sort_by: Optional[str] = None,
-    order_by: Optional[str] = None,
+    sort_by: Optional[str],
+    order_by: Optional[str],
     limit: int = 1000,
     current_user: schemas.User = Depends(users.get_current_active_admin),
 ):
+    """
+    gets the logs from the database
+
+    Args:
+        sort_by (Optional[str]): sort by date_added
+        order_by (Optional[str]): order by asc or desc
+        limit (int, optional): max amount of logs. Defaults to 1000.
+        current_user (schemas.User, optional): . Defaults to Depends(users.get_current_active_admin).
+
+    Raises:
+        fastapi.HTTPException: raises a 400 if the query is incorrect
+
+    Returns:
+        _type_: _description_
+    """
     # grab the logs from the database
     response = database.base_logs.fetch(limit=limit)
     error_logs = list(
