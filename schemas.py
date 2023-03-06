@@ -1,7 +1,7 @@
 from pydantic import BaseModel, constr, validator, EmailStr
 from typing import List, Optional
 
-from uuid import UUID, uuid4
+from uuid import UUID
 
 
 class Game(BaseModel):
