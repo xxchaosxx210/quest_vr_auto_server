@@ -1,7 +1,27 @@
-from pydantic import BaseModel, constr, validator, EmailStr
+from pydantic import BaseModel, validator, EmailStr
 from typing import List, Optional
 
 from uuid import UUID
+
+
+def validate_uuid(value: str) -> str:
+    """
+    checks if value is valid UUID and converts back into string if ok
+
+    Args:
+        value (str): the value to validate
+
+    Raises:
+        ValueError: raises a ValueError if no pattern in the string found
+
+    Returns:
+        str: returns the validated uuid
+    """
+    try:
+        uuid = UUID(value, version=4)
+    except ValueError:
+        raise ValueError("invalid UUID")
+    return str(uuid)
 
 
 class Game(BaseModel):
@@ -13,9 +33,6 @@ class Game(BaseModel):
     date_added: int
     # torrent_id
     id: str
-
-    class Config:
-        orm_mode = True
 
 
 class GameWithKey(Game):
@@ -35,9 +52,6 @@ class GameUpdateRequest(Game):
 class GamesList(BaseModel):
     games: List[Game]
 
-    class Config:
-        orm_mode = True
-
 
 class SearchGameRequest(BaseModel):
     key: Optional[str]
@@ -49,33 +63,11 @@ class SearchGameRequest(BaseModel):
 
 class ErrorRequest(BaseModel):
     type: str
-    uuid: constr(
-        regex="^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
-    )
+    uuid: str
     exception: str
     traceback: str
 
-    @validator("uuid")
-    def validate_uuid(cls, value: str) -> str:
-        """
-
-        Args:
-            value (str): the value to validate
-
-        Raises:
-            ValueError: raises a ValueError if no pattern in the string found
-
-        Returns:
-            str: returns the validated uuid
-        """
-        try:
-            uuid = UUID(value, version=4)
-        except ValueError:
-            raise ValueError("invalid UUID")
-        return str(uuid)
-
-    class Config:
-        allow_reuse = True
+    _validate_uuid = validator("uuid", allow_reuse=True)(validate_uuid)
 
 
 class ErrorLog(BaseModel):
@@ -84,9 +76,6 @@ class ErrorLog(BaseModel):
     exception: str
     uuid: str
     date_added: float
-
-    class Config:
-        orm_mode = True
 
 
 class ErrorLogResponse(ErrorLog):
