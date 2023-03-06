@@ -4,8 +4,8 @@ import fastapi
 from fastapi import Depends
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from passlib.context import CryptContext
-
 from jose import jwt, JWTError
+from pydantic import EmailStr
 
 import schemas
 import database
@@ -49,7 +49,7 @@ def verify_password(plain_password: str, hash_password: str) -> bool:
     return pass_ctx.verify(plain_password, hash_password)
 
 
-def authenticate_user(username: str, password: str) -> schemas.User:
+def authenticate_user(username: EmailStr, password: str) -> schemas.User:
     """authenticates the user by looking up the username in the database and then verifying the password
 
     Args:
@@ -69,7 +69,7 @@ def authenticate_user(username: str, password: str) -> schemas.User:
     return user
 
 
-def get_user(username: str) -> schemas.UserInDB:
+def get_user(username: EmailStr) -> schemas.UserInDB:
     """
     gets the user from the database
 
@@ -113,7 +113,7 @@ async def get_current_user(token: str = Depends(oauth2scheme)) -> schemas.UserIn
         # decode the token str into dict from secret key and the algorithm
         payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
         # get the username from decoded string
-        username: str = payload.get("sub")
+        username = payload.get("sub")
         if username is None:
             # if no user found in the token then raise a 401
             raise credentials_exception
