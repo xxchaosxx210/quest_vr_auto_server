@@ -84,10 +84,10 @@ class ErrorLogResponse(ErrorLog):
 
 class User(BaseModel):
     email: EmailStr
-    date_created: float | None = None
+    date_created: Optional[float]
     is_admin: bool = False
     is_user: bool = True
-    disabled: bool | None = None
+    disabled: Optional[bool]
 
 
 class UserInDB(User):
@@ -101,4 +101,4 @@ class Token(BaseModel):
 
 
 class TokenData(BaseModel):
-    username: EmailStr | None = None
+    username: Optional[EmailStr]
