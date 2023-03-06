@@ -17,6 +17,14 @@ router = fastapi.APIRouter(prefix="/logs")
 
 @router.post("", status_code=fastapi.status.HTTP_200_OK)
 def add_log(error: schemas.ErrorRequest):
+    """adds a log to the database
+
+    Args:
+        error (schemas.ErrorRequest): _description_
+
+    Raises:
+        fastapi.HTTPException: raises a 400 if the request is invalid
+    """
     timestamp = create_timestamp()
     try:
         error_validator = schemas.ErrorLog(
@@ -41,8 +49,7 @@ async def get_logs(
     limit: int = 1000,
     current_user: schemas.User = Depends(users.get_current_active_admin),
 ):
-    """
-    gets the logs from the database
+    """gets the logs from the database
 
     Args:
         sort_by (Optional[str]): sort by date_added
@@ -82,6 +89,18 @@ async def get_logs(
 async def delete_log(
     key: str, current_user: schemas.User = Depends(users.get_current_active_admin)
 ):
+    """deletes a log from the database
+
+    Args:
+        key (str): the key of the log to delete
+        current_user (schemas.User, optional): Defaults to Depends(users.get_current_active_admin).
+
+    Raises:
+        fastapi.HTTPException: raises a 404 if the key is not found
+
+    Returns:
+        dict: returns the logs in the database
+    """
     if key == "all":
         # delete all entries
         query_resp = database.base_logs.fetch()

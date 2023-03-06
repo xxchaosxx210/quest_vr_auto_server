@@ -20,6 +20,7 @@ ACCESS_TOKEN_EXPIRE_MINUTES = 60
 
 pass_ctx = CryptContext(schemes=["bcrypt"], deprecated="auto")
 
+# use OAuth2 scheme to get the token
 oauth2scheme = OAuth2PasswordBearer(tokenUrl="token")
 
 
