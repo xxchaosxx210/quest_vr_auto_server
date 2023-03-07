@@ -32,9 +32,6 @@ class Game(BaseModel):
     filesize: int
     date_added: float
     id: str
-
-
-class GameWithKey(Game):
     key: str
 
 

@@ -33,7 +33,7 @@ async def get_games():
 @router.put(
     "/update/{key}",
     status_code=fastapi.status.HTTP_200_OK,
-    response_model=schemas.GameWithKey,
+    response_model=schemas.Game,
 )
 async def update_game(
     game: schemas.GameUpdateRequest,
@@ -64,7 +64,7 @@ async def update_game(
             fastapi.status.HTTP_404_NOT_FOUND, "Could not find entry in Base"
         )
     try:
-        game_with_key = schemas.GameWithKey(**base_response.items[0])
+        game_with_key = schemas.Game(**base_response.items[0])
     except ValidationError:
         raise fastapi.HTTPException(
             fastapi.status.HTTP_500_INTERNAL_SERVER_ERROR,
@@ -77,7 +77,7 @@ async def update_game(
 @router.get(
     "/search",
     status_code=fastapi.status.HTTP_200_OK,
-    response_model=List[schemas.GameWithKey],
+    response_model=List[schemas.Game],
 )
 async def find_games(
     search_request: schemas.SearchGameRequest,
@@ -93,7 +93,7 @@ async def find_games(
         fastapi.HTTPException: 404 not found error
 
     Returns:
-        List[GameWithKey]:
+        List[Game]:
     """
     query_req = search_request.dict(exclude_unset=True)
     query_resp = base_games.fetch(query_req)
@@ -104,7 +104,7 @@ async def find_games(
         )
     games = list(
         map(
-            lambda index: schemas.GameWithKey(**query_resp.items[index]),
+            lambda index: schemas.Game(**query_resp.items[index]),
             range(query_resp.count),
         )
     )
