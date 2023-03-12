@@ -116,7 +116,10 @@ async def add_game(
     game: schemas.Game,
     current_admin: schemas.User = fastapi.Depends(get_current_active_admin),
 ):
-    """adds a game to the database
+    """adds a game to the database.
+
+    Note that when making a request pass key as an empty string this filed is excluded when adding to
+    the database as a new key is generated
 
     Args:
         game (schemas.Game):
@@ -134,4 +137,4 @@ async def add_game(
             fastapi.status.HTTP_400_BAD_REQUEST, "Game already exists"
         )
     game.date_added = create_timestamp()
-    base_games.put(game.dict())
+    base_games.put(game.dict(exclude={"key"}))
