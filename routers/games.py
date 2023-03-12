@@ -21,7 +21,6 @@ async def get_games():
         List[schemas.Game]
     """
 
-    # game_models = db.query(models.Games).all()
     def get_game_schema(game: dict):
         return schemas.Game(**game)
 
