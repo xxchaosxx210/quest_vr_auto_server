@@ -3,22 +3,19 @@
 
 import fastapi
 
-# from fastapi.staticfiles import StaticFiles
-# from fastapi.routing import Mount
-# from fastapi.templating import Jinja2Templates
+import config
 
 from routers import games
 from routers import logs
 from routers import users
+from routers import site
 from routers import help
 
 
-# routes = [Mount("/static", StaticFiles(directory="static"), name="static")]
+app = fastapi.FastAPI(routes=config.routes)
 
-app = fastapi.FastAPI()
-
-
+app.include_router(site.router)
+app.include_router(help.router)
 app.include_router(games.router)
 app.include_router(logs.router)
 app.include_router(users.router)
-app.include_router(help.router)

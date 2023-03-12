@@ -1,0 +1,158 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Puritan', sans-serif;
+    background-color: #F5F6F7;
+    color: #1C1E21;
+    padding: 1em;
+}
+
+h1 {
+    font-size: 24pt;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+h2 {
+    font-size: 16pt;
+    margin-top: 2rem;
+}
+
+p {
+    font-size: 12pt;
+    line-height: 1.5;
+    margin-bottom: 1em;
+}
+
+a {
+    color: #9a03d6;
+    text-decoration: none;
+    font-size: 12pt;
+}
+
+code {
+    font-family: monospace;
+    background-color: #F5F5F5;
+    padding: 5px;
+}
+
+pre {
+    font-family: monospace;
+    background-color: #F5F5F5;
+    padding: 1rem;
+    white-space: pre-wrap;
+}
+
+li {
+    font-size: 12pt;
+    line-height: 1;
+    margin-bottom: 2em;
+}
+
+.container {
+    max-width: 800px;
+    margin: auto;
+}
+
+.alert {
+    background-color: #FFDDDD;
+    color: #721C24;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.code {
+    background-color: #F5F5F5;
+    padding: 20px;
+    white-space: pre-wrap;
+    margin-bottom: 20px;
+}
+
+/* Navbar */
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #333;
+    color: #fff;
+    font-size: 1.2rem;
+    height: 80px;
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0 1rem;
+}
+
+.navbar-logo {
+    font-weight: bold;
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: #fff;
+}
+
+.nav-menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-item {
+    margin: 0 1rem;
+}
+
+.nav-link {
+    text-decoration: none;
+    color: #fff;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #f1c40f;
+}
+
+.navbar-toggle {
+    display: none;
+}
+
+.navbar-toggle-icon {
+    display: block;
+    width: 25px;
+    height: 2px;
+    background-color: #fff;
+    margin: 5px;
+    transition: transform 0.3s ease;
+}
+
+@media screen and (max-width: 768px) {
+    .nav-menu {
+        display: none;
+    }
+
+    .navbar-toggle {
+        display: block;
+        cursor: pointer;
+    }
+
+    .navbar-toggle.active .navbar-toggle-icon:nth-of-type(1) {
+        transform: rotate(-45deg) translate(-5px, 6px);
+    }
+
+    .navbar-toggle.active .navbar-toggle-icon:nth-of-type(2) {
+        opacity: 0;
+    }
+
+    .navbar-toggle.active .navbar-toggle-icon:nth-of-type(3) {
+        transform: rotate(45deg) translate(-5px, -6px);
+    }
+}
