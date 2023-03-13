@@ -6,17 +6,89 @@
     {% block title %}
     {% endblock %}
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Puritan&display=swap">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', path='/styles.css') }}">
+    <!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', path='/css/style.css') }}"> -->
+    <style>
+        :root {
+            --background-colour: #fff;
+            --box-colour: #8EB8E5;
+            --text-colour: #5B5750;
+            --link-colour: #532C73;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Puritan', sans-serif;
+            background-color: var(--background-colour);
+            color: var(--text-colour);
+        }
+
+        h1 {
+            font-size: 1.8rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        h2 {
+            font-size: 1.4rem;
+            margin-top: 2rem;
+        }
+
+        p {
+            font-size: 0.9rem;
+            line-height: 1.5;
+            margin-bottom: 1em;
+        }
+
+        a {
+            color: var(--link-colour);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        code {
+            font-family: monospace;
+            background-color: var(--background-colour);
+            padding: 5px;
+        }
+
+        pre {
+            font-family: monospace;
+            background-color: var(--background-colour);
+            padding: 1rem;
+            white-space: pre-wrap;
+        }
+
+        li {
+            font-size: 0.8rem;
+            line-height: 1;
+            margin-bottom: 2em;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+        }
+    </style>
 </head>
 
 <body>
     <nav class="navbar">
         <div class="navbar-container">
-            <a href="#" class="navbar-logo">QuestCave version 1.0.0</a>
+            <div class="navbar-logo">
+                <img src="{{ url_for('static', path='/images/logo.png') }}" alt="Logo">
+                <h2>
+                    {{ name }} - v{{ version }}
+                </h2>
+            </div>
             <ul class="nav-menu">
                 <li class="nav-item"><a href="/index" class="nav-link">Home</a></li>
                 <li class="nav-item"><a href="#" class="nav-link">Download</a></li>
-                <li class="nav-item"><a href="/help/development-mode-setup" class="nav-link">Help</a></li>
+                <li class="nav-item"><a href="/help" class="nav-link">Help</a></li>
                 <li class="nav-item"><a href="#" class="nav-link">Contact</a></li>
             </ul>
             <div class="navbar-toggle">
@@ -27,6 +99,12 @@
 
     {% block content %}
     {% endblock %}
+
+    <footer>
+        <div class="container">
+            <p>© 2023 {{ name }}. All rights reserved. Developed by {{ author }}</p>
+        </div>
+    </footer>
 </body>
 
 </html>
