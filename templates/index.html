@@ -2,8 +2,27 @@
 {% block title %}
 <title>Home</title>
 {% endblock %}
+{% block head_tag %}
+<style>
+    .container>.content-box {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .content-box>.btn {
+        margin: 0 auto;
+        margin-top: 1em;
+    }
+</style>
+{% endblock %}
 {% block content %}
 <div class="container">
-    <p>QuestCave Downloads and Installs Quest 2 Games (Paid/Free) to a Meta Quest 2 device.</p>
+    <div class="content-box large-spacing">
+        <h3>
+            QuestCave is currently a Windows Desktop app which Downloads and Installs Quest 2 Games (Paid/Free) to a
+            Meta Quest 2 device. There are currently 30 Games availible to download.
+        </h3>
+        <a href="/download" class="btn">Get the App</a>
+    </div>
 </div>
 {% endblock %}

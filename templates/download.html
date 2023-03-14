@@ -4,10 +4,19 @@
 <title>Download</title>
 {% endblock %}
 
+{% block head_tag %}
+<style>
+    .container {
+        display: flex;
+        justify-content: center;
+    }
+</style>
+{% endblock %}
+
 {% block content %}
 <div class="container">
-    <h2>Download</h2>
-    <p>Download the latest version of the app here:</p>
-    <a href="#" class="btn">Download</a>
+    <div class="content-box large-spacing">
+        <a href="#">Windows Desktop Release {{ version }}</a>
+    </div>
 </div>
 {% endblock %}

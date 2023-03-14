@@ -16,8 +16,8 @@
 
 body {
     font-family: 'Puritan', sans-serif;
-    background-color: var(--background-colour);
-    color: var(--text-colour);
+    background-color: white;
+    color: black;
 }
 
 p {
@@ -27,9 +27,13 @@ p {
 }
 
 a {
-    color: var(--link-colour);
     text-decoration: none;
-    font-size: 0.9rem;
+    font-weight: bold;
+    color: white;
+}
+
+a:hover {
+    color: var(--dutch-white);
 }
 
 li {
@@ -38,31 +42,90 @@ li {
     margin-bottom: 2em;
 }
 
+/* create a .btn class with a dark purple background. a light purple border at 2px and flips the color when cursor hovers */
+.btn {
+    background-color: white;
+    padding: 1rem;
+    display: flex;
+    width: fit-content;
+    border-radius: 1rem;
+    color: var(--dark-purple);
+    border: 2px solid pink;
+}
+
+.btn:hover {
+    color: pink;
+    background-color: var(--moon-stone);
+}
+
+.content-box {
+    background-color: var(--pomp-and-power);
+    color: white;
+    text-align: center;
+    overflow-wrap: break-word;
+    width: fit-content;
+    line-height: 1.5;
+}
+
+.large-spacing {
+    padding: 4rem;
+    margin: 2rem;
+}
+
+.medium {
+    padding: 2rem;
+    margin: 1rem;
+}
+
+
 .help-navigation-container {
     display: inline-block;
     padding: 4em;
     text-align: left;
-    background-color: var(--box-colour);
-    color: var(--background-colour);
+}
+
+.help-navigation-container h2 {
+    line-height: 2.5;
 }
 
 .help-navigation-container li {
     list-style-type: none;
 }
 
-.container {
-    max-width: 800px;
-    margin: auto;
+.title-container {
+    background-color: var(--dark-purple);
+    display: flex;
+    max-height: 48px;
+}
+
+.title-holder h2 {
+    color: white;
+    font-size: 3rem;
+}
+
+.title-holder {
+    display: flex;
+    align-items: center;
+}
+
+.icon-holder {
+    padding: 0.5rem;
+}
+
+.icon-holder img {
+    display: block;
+    max-height: 100%;
+    max-width: 100%;
 }
 
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #333;
-    color: #fff;
+    background-color: var(--dark-purple);
+    color: white;
     font-size: 1.2rem;
-    height: 80px;
+    margin-left: auto;
 }
 
 .navbar-container {
@@ -71,13 +134,6 @@ li {
     align-items: center;
     width: 100%;
     padding: 0 1rem;
-}
-
-.navbar-logo {
-    font-weight: bold;
-    font-size: 1.5rem;
-    text-decoration: none;
-    color: #fff;
 }
 
 .nav-menu {
@@ -93,10 +149,21 @@ li {
 
 .nav-link {
     text-decoration: none;
-    color: #fff;
+    color: white;
     transition: color 0.3s ease;
 }
 
 .nav-link:hover {
-    color: #f1c40f;
+    color: var(--dutch-white);
+}
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    min-width: 100%;
+    background-color: var(--dark-purple);
+    color: white;
+    text-align: center;
+    padding-top: 1rem;
 }
