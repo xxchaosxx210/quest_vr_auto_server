@@ -26,20 +26,18 @@ p {
     margin-bottom: 1em;
 }
 
-a {
+.nav-menu a {
     text-decoration: none;
     font-weight: bold;
     color: white;
 }
 
-a:hover {
+.nav-menua a:hover {
     color: var(--dutch-white);
 }
 
-li {
+.nav-menu li {
     font-size: 0.8rem;
-    line-height: 1;
-    margin-bottom: 2em;
 }
 
 /* create a .btn class with a dark purple background. a light purple border at 2px and flips the color when cursor hovers */
@@ -77,19 +75,26 @@ li {
     margin: 1rem;
 }
 
+.help-container {
+    display: flex;
+    justify-content: center;
+}
 
-.help-navigation-container {
-    display: inline-block;
-    padding: 4em;
+.help-container h1 {
+    margin-bottom: 1.5em;
+}
+
+.help-contents-ul {
+    list-style: none;
+    line-height: 3;
+}
+
+.help-contents-ul li {
     text-align: left;
 }
 
-.help-navigation-container h2 {
-    line-height: 2.5;
-}
-
-.help-navigation-container li {
-    list-style-type: none;
+.content-box a {
+    color: pink;
 }
 
 .title-container {
