@@ -1,76 +1,58 @@
+:root {
+    --dutch-white: #F4E8C1;
+    --ash-grey: #A0C1B9;
+    --moonstone: #70A0AF;
+    --pomp-and-power: #706993;
+    --dark-purple: #331E38;
+}
+
 *,
 *::before,
 *::after {
     box-sizing: border-box;
+    padding: 0;
+    margin: 0;
 }
 
 body {
     font-family: 'Puritan', sans-serif;
-    background-color: #F5F6F7;
-    color: #1C1E21;
-    padding: 1em;
-}
-
-h1 {
-    font-size: 24pt;
-    text-align: center;
-    margin-bottom: 2rem;
-}
-
-h2 {
-    font-size: 16pt;
-    margin-top: 2rem;
+    background-color: var(--background-colour);
+    color: var(--text-colour);
 }
 
 p {
-    font-size: 12pt;
+    font-size: 0.9rem;
     line-height: 1.5;
     margin-bottom: 1em;
 }
 
 a {
-    color: #9a03d6;
+    color: var(--link-colour);
     text-decoration: none;
-    font-size: 12pt;
-}
-
-code {
-    font-family: monospace;
-    background-color: #F5F5F5;
-    padding: 5px;
-}
-
-pre {
-    font-family: monospace;
-    background-color: #F5F5F5;
-    padding: 1rem;
-    white-space: pre-wrap;
+    font-size: 0.9rem;
 }
 
 li {
-    font-size: 12pt;
+    font-size: 0.8rem;
     line-height: 1;
     margin-bottom: 2em;
+}
+
+.help-navigation-container {
+    display: inline-block;
+    padding: 4em;
+    text-align: left;
+    background-color: var(--box-colour);
+    color: var(--background-colour);
+}
+
+.help-navigation-container li {
+    list-style-type: none;
 }
 
 .container {
     max-width: 800px;
     margin: auto;
-}
-
-.alert {
-    background-color: #FFDDDD;
-    color: #721C24;
-    padding: 10px;
-    border-radius: 5px;
-    margin-bottom: 20px;
-}
-
-.code {
-    background-color: #F5F5F5;
-    padding: 20px;
-    white-space: pre-wrap;
-    margin-bottom: 20px;
 }
 
 .navbar {
@@ -117,40 +99,4 @@ li {
 
 .nav-link:hover {
     color: #f1c40f;
-}
-
-.navbar-toggle {
-    display: none;
-}
-
-.navbar-toggle-icon {
-    display: block;
-    width: 25px;
-    height: 2px;
-    background-color: #fff;
-    margin: 5px;
-    transition: transform 0.3s ease;
-}
-
-@media screen and (max-width: 768px) {
-    .nav-menu {
-        display: none;
-    }
-
-    .navbar-toggle {
-        display: block;
-        cursor: pointer;
-    }
-
-    .navbar-toggle.active .navbar-toggle-icon:nth-of-type(1) {
-        transform: rotate(-45deg) translate(-5px, 6px);
-    }
-
-    .navbar-toggle.active .navbar-toggle-icon:nth-of-type(2) {
-        opacity: 0;
-    }
-
-    .navbar-toggle.active .navbar-toggle-icon:nth-of-type(3) {
-        transform: rotate(45deg) translate(-5px, -6px);
-    }
 }
