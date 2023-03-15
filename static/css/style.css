@@ -29,6 +29,10 @@ p {
     margin-bottom: 1em;
 }
 
+h2, h3, h4, h5{
+    color: var(--dutch-white);
+}
+
 .nav-menu a {
     text-decoration: none;
     font-weight: bold;
@@ -107,13 +111,13 @@ p {
     margin-bottom: 4rem;
 }
 
-.help-image-holder{
+.help-image-holder {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.help-image-holder img{
+.help-image-holder img {
     width: 600px;
     max-height: 100%;
     object-fit: contain;
@@ -125,7 +129,7 @@ p {
 }
 
 .content-box a {
-    color: var(--dutch-white);
+    color: white;
 }
 
 .content-box a:hover {
@@ -211,4 +215,8 @@ footer {
 .center-box {
     display: flex;
     justify-content: center;
+}
+
+.expand-box {
+    width: auto;
 }
