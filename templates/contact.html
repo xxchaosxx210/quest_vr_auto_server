@@ -2,10 +2,19 @@
 {% block title %}
 <title>Contact</title>
 {% endblock %}
+{% block head_tag %}
+<style>
+    .contact-box>h2 {
+        margin-bottom: 1.5rem;
+    }
+</style>
+{% endblock %}
 {% block content %}
-<div class="container">
-    <h2>Contact</h2>
-    <p>Get in touch with the developer here:</p>
-    <a href="mailto:{{ email }}">{{ email }}</a>
+<div class="container center-box">
+    <div class="contact-box content-box">
+        <h2>Contact</h2>
+        <p>Get in touch with the developer here:</p>
+        <a href="mailto:{{ email }}">{{ email }}</a>
+    </div>
 </div>
 {% endblock %}

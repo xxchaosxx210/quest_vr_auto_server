@@ -3,7 +3,10 @@
     --ash-grey: #A0C1B9;
     --moonstone: #70A0AF;
     --pomp-and-power: #706993;
+    --thistle: #fae7ff;
     --dark-purple: #331E38;
+    --space-cadet: #302F4D;
+    --light-space-cadet: #595790;
 }
 
 *,
@@ -42,18 +45,17 @@ p {
 
 /* create a .btn class with a dark purple background. a light purple border at 2px and flips the color when cursor hovers */
 .btn {
-    background-color: white;
+    background-color: var(--space-cadet);
     padding: 1rem;
     display: flex;
     width: fit-content;
     border-radius: 1rem;
-    color: var(--dark-purple);
-    border: 2px solid pink;
+    color: white;
 }
 
 .btn:hover {
-    color: pink;
-    background-color: var(--moon-stone);
+    color: white;
+    background-color: var(--light-space-cadet);
 }
 
 .content-box {
@@ -63,6 +65,7 @@ p {
     overflow-wrap: break-word;
     width: fit-content;
     line-height: 1.5;
+    padding: 2rem;
 }
 
 .large-spacing {
@@ -93,8 +96,25 @@ p {
     text-align: left;
 }
 
+.help-box {
+    text-align: left;
+    padding: 3rem;
+    margin-left: 4rem;
+    margin-right: 4rem;
+    line-height: 3;
+}
+
+.contact-box{
+    margin-top: 4rem;
+    padding: 4rem;
+}
+
 .content-box a {
-    color: pink;
+    color: var(--dutch-white);
+}
+
+.content-box a:hover {
+    color: var(--ash-grey);
 }
 
 .title-container {
@@ -171,4 +191,9 @@ footer {
     color: white;
     text-align: center;
     padding-top: 1rem;
+}
+
+.center-box {
+    display: flex;
+    justify-content: center;
 }
