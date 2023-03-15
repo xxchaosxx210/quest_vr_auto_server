@@ -4,7 +4,29 @@
 {% endblock %}
 {% block content %}
 {% include 'help-nav.html' %}
-<div class="container content-box center-box">
-    <h2>Part 2 - QuestCave User Guide</h2>
+<div class="container">
+    <div class="content-box help-box" style="width:auto">
+        <h2>Part 2 - QuestCave User Guide</h2>
+        <p>
+            Below is just a brief basic instruction on how to use QuestCave.
+        </p>
+    </div>
+    <div class="content-box help-box">
+        When you start the app for the first time there will be a brief loading dialog as QuestCave is dependent
+        on third party software to run. This shouldn't take too long. Once the loading has finished you should then
+        be presented with a device selection dialog. Hopefully if you have set up your Quest 2 device properly
+        it should be listed. It will have some obscure number.
+        Double click on the Device in the list.
+    </div>
+    <div class="help-image-holder">
+        <img src="{{ url_for('static', path='/images/device-selection.jpg') }}" alt="">
+    </div>
+    <div class="content-box help-box">
+        In the first list is a list of installed Games and Apps on your Quest 2 device. Below is
+        the list of Games availible to download and install.
+
+        Select a game from the bottom list and right click to bring up the popup menu
+        with some options
+    </div>
 </div>
 {% endblock %}

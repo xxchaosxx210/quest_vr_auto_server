@@ -66,6 +66,7 @@ p {
     width: fit-content;
     line-height: 1.5;
     padding: 2rem;
+    border-radius: 2rem;
 }
 
 .large-spacing {
@@ -102,9 +103,23 @@ p {
     margin-left: 4rem;
     margin-right: 4rem;
     line-height: 3;
+    margin-top: 4rem;
+    margin-bottom: 4rem;
 }
 
-.contact-box{
+.help-image-holder{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.help-image-holder img{
+    width: 600px;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.contact-box {
     margin-top: 4rem;
     padding: 4rem;
 }
