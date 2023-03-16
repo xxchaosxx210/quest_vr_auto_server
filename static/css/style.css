@@ -9,7 +9,7 @@
     --light-space-cadet: #595790;
 }
 
-/* standard elements */
+/* Standard Elements */
 
 *,
 *::before,
@@ -38,110 +38,7 @@ h5 {
     color: var(--dutch-white);
 }
 
-/* Navbar */
-
-.nav-menu a {
-    text-decoration: none;
-    font-weight: bold;
-    color: white;
-}
-
-.nav-menua a:hover {
-    color: var(--dutch-white);
-}
-
-.nav-menu li {
-    font-size: 0.8rem;
-}
-
-/* create a .btn class with a dark purple background. a light purple border at 2px and flips the color when cursor hovers */
-.btn {
-    background-color: var(--space-cadet);
-    padding: 1rem;
-    display: flex;
-    width: fit-content;
-    border-radius: 1rem;
-    color: white;
-}
-
-.btn:hover {
-    color: white;
-    background-color: var(--light-space-cadet);
-}
-
-.content-box {
-    background-color: var(--pomp-and-power);
-    color: white;
-    text-align: center;
-    overflow-wrap: break-word;
-    width: fit-content;
-    line-height: 1.5;
-    padding: 2rem;
-    border-radius: 2rem;
-}
-
-.large-spacing {
-    padding: 4rem;
-    margin: 2rem;
-}
-
-.medium {
-    padding: 2rem;
-    margin: 1rem;
-}
-
-.help-container {
-    display: flex;
-    justify-content: center;
-}
-
-.help-container h1 {
-    margin-bottom: 1.5em;
-}
-
-.help-contents-ul {
-    list-style: none;
-    line-height: 3;
-}
-
-.help-contents-ul li {
-    text-align: left;
-}
-
-.help-box {
-    text-align: left;
-    padding: 3rem;
-    margin-left: 4rem;
-    margin-right: 4rem;
-    line-height: 3;
-    margin-top: 4rem;
-    margin-bottom: 4rem;
-}
-
-.help-image-holder {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.help-image-holder img {
-    width: 600px;
-    max-height: 100%;
-    object-fit: contain;
-}
-
-.contact-box {
-    margin-top: 4rem;
-    padding: 4rem;
-}
-
-.content-box a {
-    color: white;
-}
-
-.content-box a:hover {
-    color: var(--ash-grey);
-}
+/* Header Elements */
 
 .title-container {
     background-color: var(--dark-purple);
@@ -201,11 +98,119 @@ h5 {
 .nav-link {
     text-decoration: none;
     color: white;
+    font-weight: bold;
     transition: color 0.3s ease;
 }
 
 .nav-link:hover {
     color: var(--dutch-white);
+}
+
+.nav-menu li {
+    font-size: 0.8rem;
+}
+
+/* Custom Elements */
+
+.btn {
+    background-color: var(--space-cadet);
+    padding: 1rem;
+    display: flex;
+    width: fit-content;
+    border-radius: 1rem;
+    color: white;
+}
+
+.btn:hover {
+    color: white;
+    background-color: var(--light-space-cadet);
+}
+
+.content-box {
+    background-color: var(--pomp-and-power);
+    color: white;
+    text-align: center;
+    overflow-wrap: break-word;
+    width: fit-content;
+    line-height: 1.5;
+    padding: 2rem;
+    border-radius: 2rem;
+}
+
+.content-box a {
+    color: white;
+}
+
+.content-box a:hover {
+    color: var(--ash-grey);
+}
+
+/* Help Pages */
+
+.help-container {
+    display: flex;
+    justify-content: center;
+}
+
+.help-container h1 {
+    margin-bottom: 1.5em;
+}
+
+.help-contents-ul {
+    list-style: none;
+    line-height: 3;
+}
+
+.help-contents-ul li {
+    text-align: left;
+}
+
+.help-box {
+    text-align: left;
+    padding: 3rem;
+    margin-left: 4rem;
+    margin-right: 4rem;
+    line-height: 3;
+    margin-top: 4rem;
+    margin-bottom: 4rem;
+}
+
+.help-image-holder {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.help-image-holder img {
+    width: 600px;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+/* Contact Page */
+
+.contact-box {
+    margin-top: 4rem;
+    padding: 4rem;
+}
+
+/* Misc Elements */
+
+.large-spacing {
+    padding: 4rem;
+    margin: 2rem;
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-center {
+    justify-content: center;
+}
+
+.expand-box {
+    width: auto;
 }
 
 footer {
@@ -218,16 +223,6 @@ footer {
     text-align: center;
     padding-top: 1rem;
 }
-
-.center-box {
-    display: flex;
-    justify-content: center;
-}
-
-.expand-box {
-    width: auto;
-}
-
 
 @media screen and (max-width: 768px) {
     .title-holder h2 {
