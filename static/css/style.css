@@ -25,12 +25,6 @@ body {
     color: black;
 }
 
-p {
-    font-size: 0.9rem;
-    line-height: 1.5;
-    margin-bottom: 1em;
-}
-
 h2,
 h3,
 h4,
@@ -43,7 +37,6 @@ h5 {
 .title-container {
     background-color: var(--dark-purple);
     display: flex;
-    max-height: 48px;
 }
 
 .title-holder h2 {
@@ -209,7 +202,7 @@ h5 {
     justify-content: center;
 }
 
-.expand-box {
+.expand {
     width: auto;
 }
 
@@ -224,12 +217,31 @@ footer {
     padding-top: 1rem;
 }
 
-@media screen and (max-width: 768px) {
+/* Small Screen */
+@media only screen and (max-width: 600px) {
     .title-holder h2 {
         font-size: 1.2rem;
     }
 
     .icon-holder {
         max-width: 34px;
+    }
+
+    p {
+        font-size: 0.4rem;
+        line-height: 1;
+        margin-bottom: 0.5em;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    p {
+        font-size: 0.9rem;
+        line-height: 1.5;
+        margin-bottom: 1em;
+    }
+
+    .title-container {
+        max-height: 3rem;
     }
 }
