@@ -4,76 +4,74 @@
 {% endblock %}
 {% block content %}
 {% include 'help-nav.html' %}
-<div class="container">
-    <div class="content-box help-box expand">
-        <h2>Part 2 - QuestCave User Guide</h2>
-        <p>
-            Below is just a brief basic instruction on how to use QuestCave.
-        </p>
+<div class="content-box help-box expand">
+    <h2>Part 2 - QuestCave User Guide</h2>
+    <p>
+        Below is just a brief basic instruction on how to use QuestCave.
+    </p>
+</div>
+<div class="content-box help-box expand">
+    <p>
+        When you start the app for the first time there will be a brief loading dialog as QuestCave is dependent
+        on third party software to run. This shouldn't take too long. Once the loading has finished you should then
+        be presented with a device selection dialog. Hopefully if you have set up your Quest 2 device properly
+        it should be listed. It will have some obscure number.
+        Double click on the Device in the list.
+    </p>
+    <div class="help-image-holder">
+        <img src="{{ url_for('static', path='/images/device-selection.png') }}" alt="">
     </div>
-    <div class="content-box help-box expand">
-        <p>
-            When you start the app for the first time there will be a brief loading dialog as QuestCave is dependent
-            on third party software to run. This shouldn't take too long. Once the loading has finished you should then
-            be presented with a device selection dialog. Hopefully if you have set up your Quest 2 device properly
-            it should be listed. It will have some obscure number.
-            Double click on the Device in the list.
-        </p>
-        <div class="help-image-holder">
-            <img src="{{ url_for('static', path='/images/device-selection.png') }}" alt="">
-        </div>
-    </div>
-    <div class="content-box help-box expand">
-        <p>
-            In the first list is a list of installed Games and Apps on your Quest 2 device. Below is
-            the list of Games availible to download and install.
+</div>
+<div class="content-box help-box expand">
+    <p>
+        In the first list is a list of installed Games and Apps on your Quest 2 device. Below is
+        the list of Games availible to download and install.
 
-            Select a game from the bottom list and right click to bring up the popup menu
-            with some options
-        </p>
-        <div class="help-image-holder">
-            <img src="{{ url_for('static', path='/images/game-options.png') }}" alt="">
-        </div>
-        <ul>
-            <li>
-                <b>Download and Install</b> - This will Download and Install the Game (Install can take several seconds
-                to minutes depending on the File size)
-            </li>
-            <li>
-                <b>Game Info</b> - Information about the Game
-            </li>
-            <li>
-                <b>Pause, Resume, Cancel</b> - Pause, Resume or Cancel the Download
-            </li>
-        </ul>
+        Select a game from the bottom list and right click to bring up the popup menu
+        with some options
+    </p>
+    <div class="help-image-holder">
+        <img src="{{ url_for('static', path='/images/game-options.png') }}" alt="">
     </div>
-    <div class="content-box help-box expand">
-        <h3>GameCave Options:</h3>
-        <p>
-            To bring up the Options, click on the User->Preferences Menu or CTRL-S is the keyboard shortcut.
-        </p>
-        <div class="help-image-holder">
-            <img src="{{ url_for('static', path='/images/preferences.png') }}" alt="">
-        </div>
-        <ul>
-            <li>
-                <b>Download Path</b> - The path where the Games will be downloaded to. Default is in the Users Home Path
-            </li>
-            <li>
-                <b>Download Only</b> - If checked, the Game will only be downloaded and not installed. This allows you
-                to install later
-            </li>
-            <li>
-                <b>Delete Files after successful Install</b> - If checked, the downloaded files will be deleted after
-                installation. Keep this unchecked to keep a backup for later
-            </li>
-            <li>
-                <b>Close Dialog after Install complete</b> - Closes the Installation Dialog automatically after install
-            </li>
-        </ul>
-        <p>
-            More options will be added in the future.
-        </p>
+    <ul>
+        <li>
+            <b>Download and Install</b> - This will Download and Install the Game (Install can take several seconds
+            to minutes depending on the File size)
+        </li>
+        <li>
+            <b>Game Info</b> - Information about the Game
+        </li>
+        <li>
+            <b>Pause, Resume, Cancel</b> - Pause, Resume or Cancel the Download
+        </li>
+    </ul>
+</div>
+<div class="content-box help-box expand">
+    <h3>GameCave Options:</h3>
+    <p>
+        To bring up the Options, click on the User->Preferences Menu or CTRL-S is the keyboard shortcut.
+    </p>
+    <div class="help-image-holder">
+        <img src="{{ url_for('static', path='/images/preferences.png') }}" alt="">
     </div>
+    <ul>
+        <li>
+            <b>Download Path</b> - The path where the Games will be downloaded to. Default is in the Users Home Path
+        </li>
+        <li>
+            <b>Download Only</b> - If checked, the Game will only be downloaded and not installed. This allows you
+            to install later
+        </li>
+        <li>
+            <b>Delete Files after successful Install</b> - If checked, the downloaded files will be deleted after
+            installation. Keep this unchecked to keep a backup for later
+        </li>
+        <li>
+            <b>Close Dialog after Install complete</b> - Closes the Installation Dialog automatically after install
+        </li>
+    </ul>
+    <p>
+        More options will be added in the future.
+    </p>
 </div>
 {% endblock %}

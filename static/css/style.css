@@ -1,12 +1,12 @@
 :root {
-    --dutch-white: #F4E8C1;
-    --ash-grey: #A0C1B9;
-    --moonstone: #70A0AF;
-    --pomp-and-power: #706993;
-    --thistle: #fae7ff;
-    --dark-purple: #331E38;
-    --space-cadet: #302F4D;
-    --light-space-cadet: #595790;
+    --text-primary: white;
+    --text-secondary: #F4E8C1;
+    --text-highlight: #A0C1B9;
+    --btn-background: #302F4D;
+    --btn-background-light: #595790;
+    --bg-primary: #331E38;
+    --bg-secondary: #706993;
+    --transition-speed: 600ms;
 }
 
 /* Standard Elements */
@@ -29,99 +29,99 @@ h2,
 h3,
 h4,
 h5 {
-    color: var(--dutch-white);
+    color: var(--text-secondary);
 }
 
 /* Header Elements */
 
-.title-container {
-    background-color: var(--dark-purple);
-    display: flex;
-}
-
-.title-holder h2 {
-    color: white;
-    font-size: 3rem;
-}
-
-.title-holder {
-    display: flex;
-    align-items: center;
-}
-
-.icon-holder {
-    padding: 0.5rem;
-}
-
-.icon-holder img {
-    display: block;
-    max-height: 100%;
-    max-width: 100%;
-}
-
 .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: var(--dark-purple);
-    color: white;
-    font-size: 1.2rem;
-    margin-left: auto;
-}
-
-.navbar-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    padding: 0 1rem;
+    position: fixed;
+    background-color: var(--bg-secondary);
+    overflow: scroll;
+    transition: width 200ms ease;
 }
 
 .nav-menu {
-    display: flex;
     list-style: none;
-    margin: 0;
     padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
 }
 
 .nav-item {
-    margin: 0 1rem;
+    width: 100%;
 }
 
 .nav-link {
+    display: flex;
+    align-items: center;
+    height: 5rem;
+    color: var(--text-secondary);
     text-decoration: none;
-    color: white;
-    font-weight: bold;
-    transition: color 0.3s ease;
+    filter: grayscale(100%) opacity(0.7);
+    transition: var(--transition-speed);
 }
 
 .nav-link:hover {
-    color: var(--dutch-white);
+    filter: grayscale(0%) opacity(1);
+    background: var(--bg-secondary);
+    color: var(--text-secondary);
 }
 
-.nav-menu li {
-    font-size: 0.8rem;
+.link-text {
+    display: none;
+    margin-left: 1rem;
 }
+
+.nav-link svg {
+    margin: 0 1.5rem;
+    width: max(2rem);
+}
+
+/* Logo */
+.logo {
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    text-align: center;
+    color: var(--text-secondary);
+    background: var(--bg-secondary);
+}
+
+.logo img {
+    width: 3rem;
+    display: inline-block;
+    margin: 0 auto;
+}
+
+.logo-text {
+    padding: 1rem;
+    transition: var(--transition-speed);
+}
+
 
 /* Custom Elements */
 
 .btn {
-    background-color: var(--space-cadet);
+    background-color: var(--btn-background);
     padding: 1rem;
     display: flex;
     width: fit-content;
     border-radius: 1rem;
-    color: white;
+    color: var(--text-primary);
 }
 
 .btn:hover {
-    color: white;
-    background-color: var(--light-space-cadet);
+    color: var(--text-primary);
+    background-color: var(--btn-background-light);
 }
 
 .content-box {
-    background-color: var(--pomp-and-power);
-    color: white;
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
     text-align: center;
     overflow-wrap: break-word;
     width: fit-content;
@@ -131,11 +131,11 @@ h5 {
 }
 
 .content-box a {
-    color: white;
+    color: var(--text-primary);
 }
 
 .content-box a:hover {
-    color: var(--ash-grey);
+    color: var(--text-highlight);
 }
 
 /* Help Pages */
@@ -211,26 +211,54 @@ footer {
     left: 0;
     bottom: 0;
     min-width: 100%;
-    background-color: var(--dark-purple);
-    color: white;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
     text-align: center;
     padding-top: 1rem;
 }
 
 /* Small Screen */
 @media only screen and (max-width: 600px) {
-    .title-holder h2 {
-        font-size: 1.2rem;
-    }
-
-    .icon-holder {
-        max-width: 34px;
-    }
-
     p {
         font-size: 0.4rem;
         line-height: 1;
         margin-bottom: 0.5em;
+    }
+
+    /* Flip the Navbar to the bottom of the screen on Mobile mode */
+
+    .navbar {
+        bottom: 0;
+        width: 100vw;
+        height: 5rem;
+    }
+
+    /* Remove the Logo */
+
+    .logo {
+        display: none;
+    }
+
+    /* Put the Icons horizontally in the flex box */
+
+    .nav-menu {
+        flex-direction: row;
+    }
+
+    .nav-link {
+        justify-content: center;
+    }
+
+    /* Reset the Main semantic */
+
+    main {
+        margin: 0;
+    }
+
+    /* Remove the footer for mobile */
+
+    footer {
+        display: none;
     }
 }
 
@@ -241,7 +269,29 @@ footer {
         margin-bottom: 1em;
     }
 
-    .title-container {
-        max-height: 3rem;
+    main {
+        margin-left: 5rem;
+        padding: 1rem;
+    }
+
+    /* Put the Nav bar to the top left */
+
+    .navbar {
+        top: 0;
+        width: 5rem;
+        height: 100vh;
+    }
+
+    /* Expand the navbar when mouse hovers */
+
+    .navbar:hover {
+        width: 16rem;
+    }
+
+    /* Display the text */
+
+    .navbar:hover .link-text {
+        display: block;
+        transition: var(--transition-speed);
     }
 }

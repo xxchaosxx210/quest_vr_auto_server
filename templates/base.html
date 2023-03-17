@@ -12,26 +12,84 @@
 </head>
 
 <body>
-    <div class="title-container">
-        <div class="icon-holder">
-            <img src="{{ url_for('static', path='/images/logo.png') }}" alt="Logo">
-        </div>
-        <div class="title-holder">
-            <h2>{{ name }}</h2>
-        </div>
-        <nav class="navbar">
-            <div class="navbar-container">
-                <ul class="nav-menu">
-                    <li class="nav-item"><a href="/index" class="nav-link">Home</a></li>
-                    <li class="nav-item"><a href="/download" class="nav-link">Download</a></li>
-                    <li class="nav-item"><a href="/help" class="nav-link">Help</a></li>
-                    <li class="nav-item"><a href="/contact" class="nav-link">Contact</a></li>
-                </ul>
-            </div>
-        </nav>
-    </div>
-    {% block content %}
-    {% endblock %}
+    <nav class="navbar">
+        <ul class="nav-menu">
+            <li class="logo">
+                <a href="#" class="nav-link">
+                    <span class="link-text logo-text">{{ name }}</span>
+                    <img src="{{ url_for('static', path='/images/logo.png') }}" alt="">
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/index" class="nav-link">
+                    <svg baseProfile="tiny" height="24px" id="Layer_1" version="1.2" viewBox="0 0 24 24" width="24px"
+                        xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <path
+                            d="M12,3c0,0-6.186,5.34-9.643,8.232C2.154,11.416,2,11.684,2,12c0,0.553,0.447,1,1,1h2v7c0,0.553,0.447,1,1,1h3  c0.553,0,1-0.448,1-1v-4h4v4c0,0.552,0.447,1,1,1h3c0.553,0,1-0.447,1-1v-7h2c0.553,0,1-0.447,1-1c0-0.316-0.154-0.584-0.383-0.768  C18.184,8.34,12,3,12,3z" />
+                    </svg>
+                    <span class="link-text">Home</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/download" class="nav-link">
+                    <svg height="512px" id="Layer_1" style="enable-background:new 0 0 512 512;" version="1.1"
+                        viewBox="0 0 512 512" width="512px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <g>
+                            <g>
+                                <polygon
+                                    points="288,144 288,160 400,160 400,432 112,432 112,160 224,160 224,144 96,144 96,448 416,448 416,144   " />
+                            </g>
+                            <g>
+                                <polygon
+                                    points="193.1,252.3 181.5,263.9 256,338.4 330.5,263.9 318.9,252.3 264.2,307 264.2,64 247.8,64 247.8,307   " />
+                            </g>
+                        </g>
+                    </svg>
+                    <span class="link-text">Download</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/help" class="nav-link">
+                    <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <style>
+                                .cls-1 {
+                                    fill: none;
+                                }
+                            </style>
+                        </defs>
+                        <title />
+                        <g data-name="Layer 2" id="Layer_2">
+                            <path d="M16,12a2,2,0,1,1,2-2A2,2,0,0,1,16,12Zm0-2Z" />
+                            <path
+                                d="M16,29A13,13,0,1,1,29,16,13,13,0,0,1,16,29ZM16,5A11,11,0,1,0,27,16,11,11,0,0,0,16,5Z" />
+                            <path d="M16,24a2,2,0,0,1-2-2V16a2,2,0,0,1,4,0v6A2,2,0,0,1,16,24Zm0-8v0Z" />
+                        </g>
+                        <g id="frame">
+                            <rect class="cls-1" height="32" width="32" />
+                        </g>
+                    </svg>
+                    <span class="link-text">Help</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="/contact" class="nav-link">
+                    <svg viewBox="0 0 96 96" xmlns="http://www.w3.org/2000/svg">
+                        <title />
+                        <path
+                            d="M48,0a48,48,0,0,0,0,96,6,6,0,0,0,0-12A36,36,0,1,1,84,48V66a6,6,0,0,1-12,0V48A24,24,0,1,0,48,72a23.7365,23.7365,0,0,0,12.2549-3.4783A17.9586,17.9586,0,0,0,96,66V48A48.0474,48.0474,0,0,0,48,0Zm0,60A12,12,0,1,1,60,48,12.0081,12.0081,0,0,1,48,60Z" />
+                    </svg>
+                    <span class="link-text">Contact</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
     <footer>
         <p>© 2023 {{ name }}. All rights reserved. Developed by {{ author }}</p>
     </footer>
