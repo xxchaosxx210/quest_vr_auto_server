@@ -172,10 +172,11 @@ h5 {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 1em;
+    margin-bottom: 1em;
 }
 
 .help-image-holder img {
-    width: 600px;
     max-height: 100%;
     object-fit: contain;
 }
@@ -219,26 +220,27 @@ footer {
 
 /* Mobile */
 @media only screen and (max-device-width:768px) {
-    
-    *{
+
+    * {
         font-size: 1.3rem;
     }
-    
-    h1{
+
+    h1 {
         font-size: 4rem;
     }
-    
-    h2{
+
+    h2 {
         font-size: 3rem;
     }
-    
-    h3{
+
+    h3 {
         font-size: 2rem;
     }
 
     p {
         line-height: 1.5;
         margin-bottom: 0.5em;
+        font-size: 1.8rem;
     }
 
     /* Flip the Navbar to the bottom of the screen on Mobile mode */
@@ -274,15 +276,16 @@ footer {
     .help-box {
         margin-left: 0.5rem;
         margin-right: 0.5rem;
-    }
-
-    .help-box {
         padding: 2rem;
         margin: 1.5rem;
     }
 
     .help-box:last-child {
         margin-bottom: 7rem;
+    }
+    
+    .help-image-holder img{
+        max-width: 768px;
     }
 
     /* Reset the Main semantic */
@@ -335,5 +338,9 @@ footer {
     .help-box {
         padding: 3rem;
         margin: 4rem;
+    }
+    
+    .help-image-holder img{
+        width: 600px;
     }
 }
