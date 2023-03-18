@@ -166,6 +166,7 @@ h5 {
 
 .help-box {
     text-align: left;
+    line-height: 3;
 }
 
 .help-image-holder {
@@ -179,6 +180,10 @@ h5 {
 .help-image-holder img {
     max-height: 100%;
     object-fit: contain;
+}
+
+.help-steps-list li{
+    line-height: 2rem;
 }
 
 /* Contact Page */
@@ -222,25 +227,24 @@ footer {
 @media only screen and (max-device-width:768px) {
 
     * {
-        font-size: 1.3rem;
+        font-size: 1.2rem;
     }
 
     h1 {
-        font-size: 4rem;
-    }
-
-    h2 {
         font-size: 3rem;
     }
 
+    h2 {
+        font-size: 2.5rem;
+    }
+
     h3 {
-        font-size: 2rem;
+        font-size: 1.5rem;
     }
 
     p {
         line-height: 1.5;
-        margin-bottom: 0.5em;
-        font-size: 1.8rem;
+        margin-bottom: 2rem;
     }
 
     /* Flip the Navbar to the bottom of the screen on Mobile mode */
@@ -276,7 +280,7 @@ footer {
     .help-box {
         margin-left: 0.5rem;
         margin-right: 0.5rem;
-        padding: 2rem;
+        padding: 3em;
         margin: 1.5rem;
     }
 
@@ -286,6 +290,10 @@ footer {
     
     .help-image-holder img{
         max-width: 768px;
+    }
+    
+    .help-contents-ul li{
+        line-height: 3;
     }
 
     /* Reset the Main semantic */

@@ -15,6 +15,20 @@
             ],
             "jinja": true,
             "justMyCode": true
-        }
+        },
+        {
+            "name": "FastAPI over LAN",
+            "type": "python",
+            "request": "launch",
+            "module": "uvicorn",
+            "args": [
+                "main:app",
+                "--host",
+                "0.0.0.0",
+                "--reload"
+            ],
+            "jinja": true,
+            "justMyCode": true
+        },
     ]
 }
