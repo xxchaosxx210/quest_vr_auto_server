@@ -17,14 +17,15 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+    font-family: 'Puritan', sans-serif;
 }
 
 body {
-    font-family: 'Puritan', sans-serif;
     background-color: white;
     color: black;
 }
 
+h1,
 h2,
 h3,
 h4,
@@ -127,7 +128,7 @@ h5 {
     width: fit-content;
     line-height: 1.5;
     padding: 2rem;
-    border-radius: 2rem;
+    border-radius: 1.5rem;
 }
 
 .content-box a {
@@ -158,14 +159,13 @@ h5 {
     text-align: left;
 }
 
+.help-contents-ul li a {
+    text-decoration: underline;
+    color: var(--text-secondary);
+}
+
 .help-box {
     text-align: left;
-    padding: 3rem;
-    margin-left: 4rem;
-    margin-right: 4rem;
-    line-height: 3;
-    margin-top: 4rem;
-    margin-bottom: 4rem;
 }
 
 .help-image-holder {
@@ -217,11 +217,27 @@ footer {
     padding-top: 1rem;
 }
 
-/* Small Screen */
-@media only screen and (max-width: 600px) and (orientation: portrait) and (min-resolution: 192dpi) {
+/* Mobile */
+@media only screen and (max-device-width:768px) {
+    
+    *{
+        font-size: 1.3rem;
+    }
+    
+    h1{
+        font-size: 4rem;
+    }
+    
+    h2{
+        font-size: 3rem;
+    }
+    
+    h3{
+        font-size: 2rem;
+    }
+
     p {
-        font-size: 0.4rem;
-        line-height: 1;
+        line-height: 1.5;
         margin-bottom: 0.5em;
     }
 
@@ -231,6 +247,7 @@ footer {
         bottom: 0;
         width: 100vw;
         height: 5rem;
+        overflow: hidden;
     }
 
     /* Remove the Logo */
@@ -249,6 +266,25 @@ footer {
         justify-content: center;
     }
 
+    .nav-link svg {
+        width: max(3rem);
+        height: max(3rem);
+    }
+
+    .help-box {
+        margin-left: 0.5rem;
+        margin-right: 0.5rem;
+    }
+
+    .help-box {
+        padding: 2rem;
+        margin: 1.5rem;
+    }
+
+    .help-box:last-child {
+        margin-bottom: 7rem;
+    }
+
     /* Reset the Main semantic */
 
     main {
@@ -262,7 +298,8 @@ footer {
     }
 }
 
-@media only screen and (min-width: 600px) {
+/* Desktop */
+@media only screen and (min-device-width: 768px) {
     p {
         font-size: 0.9rem;
         line-height: 1.5;
@@ -293,5 +330,10 @@ footer {
     .navbar:hover .link-text {
         display: block;
         transition: var(--transition-speed);
+    }
+
+    .help-box {
+        padding: 3rem;
+        margin: 4rem;
     }
 }
