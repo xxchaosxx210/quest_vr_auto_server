@@ -13,11 +13,15 @@
 {% block content %}
 <div class="flex flex-center">
     <div class="content-box large-spacing">
+        <div class="index-title">
+            <h2>Quest Cave</h2>
+            <img src="{{ url_for('static', path='/images/logo.png') }}" alt="">
+        </div>
         <h3>
-            QuestCave is currently a Windows Desktop app which Downloads and Installs Quest 2 Games (Paid/Free) to a
-            Meta Quest 2 device. There are currently 30 Games availible to download.
+            A simple Game and App installer for the Oculus Quest 2 VR Headset.
         </h3>
         <a href="/download" class="btn">Get the App</a>
+        <a href="/help" class="btn">Documentation</a>
     </div>
 </div>
 {% endblock %}

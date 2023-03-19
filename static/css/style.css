@@ -17,7 +17,7 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
-    font-family: 'Puritan', sans-serif;
+    font-family: 'Noto Sans', sans-serif;
 }
 
 body {
@@ -131,12 +131,32 @@ h5 {
     border-radius: 1.5rem;
 }
 
+.content-box-title {
+    font-size: 1.3rem;
+    color: pink;
+    margin-bottom: 1rem;
+}
+
 .content-box a {
     color: var(--text-primary);
 }
 
 .content-box a:hover {
     color: var(--text-highlight);
+}
+
+
+/* Home Page */
+.index-title {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    gap: 1em;
+    margin-bottom: 1rem;
+}
+
+.index-title>img {
+    height: 5rem;
 }
 
 /* Help Pages */
@@ -157,6 +177,7 @@ h5 {
 
 .help-contents-ul li {
     text-align: left;
+    white-space: nowrap;
 }
 
 .help-contents-ul li a {
@@ -167,6 +188,7 @@ h5 {
 .help-box {
     text-align: left;
     line-height: 3;
+    width: auto;
 }
 
 .help-image-holder {
@@ -182,8 +204,9 @@ h5 {
     object-fit: contain;
 }
 
-.help-steps-list li{
-    line-height: 2rem;
+.help-steps-list li {
+    line-height: 3rem;
+    margin-left: 1rem;
 }
 
 /* Contact Page */
@@ -227,7 +250,7 @@ footer {
 @media only screen and (max-device-width:768px) {
 
     * {
-        font-size: 1.2rem;
+        font-size: 1.5rem;
     }
 
     h1 {
@@ -277,6 +300,8 @@ footer {
         height: max(3rem);
     }
 
+    /*   Help Pages Styling   */
+
     .help-box {
         margin-left: 0.5rem;
         margin-right: 0.5rem;
@@ -288,12 +313,21 @@ footer {
         margin-bottom: 7rem;
     }
     
-    .help-image-holder img{
+    .help-steps-list li{
+        line-height: 2;
+    }
+
+    .help-image-holder img {
         max-width: 768px;
     }
-    
-    .help-contents-ul li{
+
+    .help-contents-ul li {
         line-height: 3;
+    }
+
+    /*   Misc Elements   */
+    .content-box-title {
+        font-size: 1.5rem;
     }
 
     /* Reset the Main semantic */
@@ -311,8 +345,12 @@ footer {
 
 /* Desktop */
 @media only screen and (min-device-width: 768px) {
-    p {
+
+    * {
         font-size: 0.9rem;
+    }
+
+    p {
         line-height: 1.5;
         margin-bottom: 1em;
     }
@@ -343,12 +381,19 @@ footer {
         transition: var(--transition-speed);
     }
 
+    /* Home page */
+
+    /* Hide the index-title */
+    .index-title {
+        display: none;
+    }
+
     .help-box {
         padding: 3rem;
         margin: 4rem;
     }
-    
-    .help-image-holder img{
+
+    .help-image-holder img {
         width: 600px;
     }
 }
