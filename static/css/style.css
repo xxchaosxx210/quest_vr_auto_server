@@ -18,6 +18,7 @@
     padding: 0;
     margin: 0;
     font-family: 'Noto Sans', sans-serif;
+    font-size: 1.2rem;
 }
 
 body {
@@ -161,11 +162,6 @@ h5 {
 
 /* Help Pages */
 
-.help-container {
-    display: flex;
-    justify-content: center;
-}
-
 .help-container h1 {
     margin-bottom: 1.5em;
 }
@@ -173,11 +169,6 @@ h5 {
 .help-contents-ul {
     list-style: none;
     line-height: 3;
-}
-
-.help-contents-ul li {
-    text-align: left;
-    white-space: nowrap;
 }
 
 .help-contents-ul li a {
@@ -200,7 +191,7 @@ h5 {
 }
 
 .help-image-holder img {
-    max-height: 100%;
+    max-width: 100%;
     object-fit: contain;
 }
 
@@ -249,8 +240,10 @@ footer {
 /* Mobile */
 @media only screen and (max-device-width:768px) {
 
-    * {
-        font-size: 1.5rem;
+    *,
+    *::before,
+    *::after {
+        font-size: 1.2rem;
     }
 
     h1 {
@@ -275,7 +268,7 @@ footer {
     .navbar {
         bottom: 0;
         width: 100vw;
-        height: 5rem;
+        height: 6rem;
         overflow: hidden;
     }
 
@@ -305,24 +298,15 @@ footer {
     .help-box {
         margin-left: 0.5rem;
         margin-right: 0.5rem;
-        padding: 3em;
         margin: 1.5rem;
     }
 
     .help-box:last-child {
         margin-bottom: 7rem;
     }
-    
-    .help-steps-list li{
+
+    .help-steps-list li {
         line-height: 2;
-    }
-
-    .help-image-holder img {
-        max-width: 768px;
-    }
-
-    .help-contents-ul li {
-        line-height: 3;
     }
 
     /*   Misc Elements   */
@@ -345,10 +329,6 @@ footer {
 
 /* Desktop */
 @media only screen and (min-device-width: 768px) {
-
-    * {
-        font-size: 0.9rem;
-    }
 
     p {
         line-height: 1.5;
