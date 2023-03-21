@@ -138,7 +138,7 @@ h5 {
 }
 
 .content-box a {
-    color: var(--text-primary);
+    color: var(--text-secondary);
 }
 
 .content-box a:hover {
@@ -289,9 +289,8 @@ footer {
     /*   Help Pages Styling   */
 
     .help-box {
-        margin-left: 0.5rem;
-        margin-right: 0.5rem;
         margin: 1.5rem;
+        padding: 5rem;
     }
 
     .help-steps-list li {

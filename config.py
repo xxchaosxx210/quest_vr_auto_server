@@ -2,19 +2,17 @@ from typing import Dict, Union
 
 import fastapi
 from fastapi.staticfiles import StaticFiles
-from fastapi.routing import Mount
 from fastapi.templating import Jinja2Templates
 from fastapi.requests import Request
 
 
 NAME = "QuestCave"
-VERSION = "1.0.0"
+VERSION = "1.0.1"
 AUTHOR = "Paul Millar"
 EMAIL = "chaosad@hotmail.co.uk"
 
 
 templates = Jinja2Templates(directory="templates")
-# routes = [Mount("/static", app=StaticFiles(directory="static"), name="static")]
 
 
 def mount_static_path(app: fastapi.FastAPI) -> None:
