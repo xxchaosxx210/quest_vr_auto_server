@@ -7,7 +7,7 @@ from fastapi.requests import Request
 
 
 NAME = "QuestCave"
-VERSION = "1.0.1"
+VERSION = "1.0.2"
 AUTHOR = "Paul Millar"
 EMAIL = "chaosad@hotmail.co.uk"
 
