@@ -99,3 +99,9 @@ class Token(BaseModel):
 
 class TokenData(BaseModel):
     username: Optional[EmailStr]
+
+
+class AppLatestVersionResponse(BaseModel):
+    version: str
+    url: str
+    mirror_url: str

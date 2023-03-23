@@ -12,6 +12,14 @@ AUTHOR = "Paul Millar"
 EMAIL = "chaosad@hotmail.co.uk"
 
 
+DOWNLOAD_LINKS = {
+    "1.0.2": {
+        "url": "https://www.dropbox.com/s/ggcoet6tricfu64/questcave_setup_v1.0.2.exe?dl=0",
+        "mirror_url": "https://www.mediafire.com/file/r0zg89jkb4ryr31/questcave_setup_v1.0.2.exe/file",
+    }
+}
+
+
 templates = Jinja2Templates(directory="templates")
 
 

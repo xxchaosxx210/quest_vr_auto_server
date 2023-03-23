@@ -4,6 +4,7 @@ from fastapi.responses import HTMLResponse
 from fastapi import APIRouter
 
 import config
+import schemas
 
 router = APIRouter(prefix="")
 
@@ -51,6 +52,9 @@ async def get_help_questcave_guide(request: Request):
 )
 async def get_download(request: Request):
     context = config.get_context(request)
+    latest = config.DOWNLOAD_LINKS.get(config.VERSION)
+    context["download_link_one"] = latest["url"]
+    context["download_link_two"] = latest["mirror_url"]
     return config.templates.TemplateResponse("download.html", context)
 
 
@@ -60,3 +64,15 @@ async def get_download(request: Request):
 async def get_contact(request: Request):
     context = config.get_context(request)
     return config.templates.TemplateResponse("contact.html", context)
+
+
+@router.get(
+    "/app-details",
+    status_code=fastapi.status.HTTP_200_OK,
+    response_model=schemas.AppLatestVersionResponse,
+)
+async def get_app_details():
+    latest = config.DOWNLOAD_LINKS.get(config.VERSION)
+    return schemas.AppLatestVersionResponse(
+        version=config.VERSION, url=latest["url"], mirror_url=latest["mirror_url"]
+    )
