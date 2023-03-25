@@ -13,8 +13,8 @@ EMAIL = "chaosad@hotmail.co.uk"
 
 
 DOWNLOAD_LINKS = {
-    "1.0.2": {
-        "url": "https://www.dropbox.com/s/ggcoet6tricfu64/questcave_setup_v1.0.2.exe?dl=0",
+    "1.0.3": {
+        "url": "https://drive.google.com/file/d/1ptBAVlo6BTY6GgRrwpWlCZNMAet4X00X/view?usp=sharing",
         "mirror_url": "https://www.mediafire.com/file/r0zg89jkb4ryr31/questcave_setup_v1.0.2.exe/file",
     }
 }
