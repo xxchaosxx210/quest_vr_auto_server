@@ -1,4 +1,4 @@
-from typing import Dict, Union
+from typing import Dict, Union, Any
 
 import fastapi
 from fastapi.staticfiles import StaticFiles
@@ -7,15 +7,22 @@ from fastapi.requests import Request
 
 
 NAME = "QuestCave"
-VERSION = "1.0.2"
+VERSION = "1.0.3"
 AUTHOR = "Paul Millar"
 EMAIL = "chaosad@hotmail.co.uk"
 
 
-DOWNLOAD_LINKS = {
-    "1.0.3": {
+DOWNLOAD_LINKS: Dict[str, Dict[str, Any]] = {
+    VERSION: {
         "url": "https://drive.google.com/file/d/1ptBAVlo6BTY6GgRrwpWlCZNMAet4X00X/view?usp=sharing",
         "mirror_url": "https://www.mediafire.com/file/r0zg89jkb4ryr31/questcave_setup_v1.0.2.exe/file",
+        "description": {
+            "new_features": [
+                "Screen now stays on during the install process",
+                "Version check. QuestCave will now notify when there is a new release",
+            ],
+            "bug_fixes": [],
+        },
     }
 }
 

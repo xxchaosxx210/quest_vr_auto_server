@@ -1,3 +1,4 @@
+from typing import Dict, Any
 import fastapi
 from fastapi.requests import Request
 from fastapi.responses import HTMLResponse
@@ -52,9 +53,9 @@ async def get_help_questcave_guide(request: Request):
 )
 async def get_download(request: Request):
     context = config.get_context(request)
-    latest = config.DOWNLOAD_LINKS.get(config.VERSION)
-    context["download_link_one"] = latest["url"]
-    context["download_link_two"] = latest["mirror_url"]
+    latest = config.DOWNLOAD_LINKS.get(config.VERSION, {})
+    context["download_link_one"] = latest.get("url", "")
+    context["download_link_two"] = latest.get("mirror_url", "")
     return config.templates.TemplateResponse("download.html", context)
 
 
@@ -72,7 +73,14 @@ async def get_contact(request: Request):
     response_model=schemas.AppLatestVersionResponse,
 )
 async def get_app_details():
-    latest = config.DOWNLOAD_LINKS.get(config.VERSION)
+    latest = config.DOWNLOAD_LINKS.get(config.VERSION, {})
+    description = schemas.AppLatestVersionDescription(
+        # latest["description"]["new_features"], latest["description"]["bug_fixes"]
+        **latest.get("description", {})
+    )
     return schemas.AppLatestVersionResponse(
-        version=config.VERSION, url=latest["url"], mirror_url=latest["mirror_url"]
+        version=config.VERSION,
+        url=latest["url"],
+        mirror_url=latest["mirror_url"],
+        description=description,
     )

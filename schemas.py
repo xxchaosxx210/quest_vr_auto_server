@@ -101,7 +101,13 @@ class TokenData(BaseModel):
     username: Optional[EmailStr]
 
 
+class AppLatestVersionDescription(BaseModel):
+    new_features: List[str]
+    bug_fixes: List[str]
+
+
 class AppLatestVersionResponse(BaseModel):
     version: str
     url: str
     mirror_url: str
+    description: AppLatestVersionDescription
