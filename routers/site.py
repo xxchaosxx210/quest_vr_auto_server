@@ -72,11 +72,14 @@ async def get_contact(request: Request):
     status_code=fastapi.status.HTTP_200_OK,
     response_model=schemas.AppLatestVersionResponse,
 )
-async def get_app_details():
+async def get_app_details(request: Request):
     latest = config.DOWNLOAD_LINKS.get(config.VERSION, {})
-    description = schemas.AppLatestVersionDescription(
-        # latest["description"]["new_features"], latest["description"]["bug_fixes"]
-        **latest.get("description", {})
+    description = latest.get("description", {})
+    context = config.get_context(request)
+    context["new_features"] = description.get("new_features", [])
+    context["bug_fixes"] = description.get("bug_fixes")
+    description = config.templates.TemplateResponse("update.html", context).body.decode(
+        "utf-8"
     )
     return schemas.AppLatestVersionResponse(
         version=config.VERSION,
