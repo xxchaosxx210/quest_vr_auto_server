@@ -10,20 +10,28 @@
 
 <body>
 
-    <h1>New in {{ name }} for Windows</h1>
-    <h2>Release Highlights</h2>
+    <h2>New in {{ name }} for Windows</h2>
+    <h3>
+        <font color="#878383">Release Highlights</font>
+    </h3>
     <ul>
         {% for feature in new_features %}
         <li>{{ feature }}</li>
         {% endfor %}
     </ul>
-    <h2>Fixed Bugs</h2>
+    <h3>
+        <font color="#878383">Fixed Bugs</font>
+    </h3>
     <ul>
         {% for fix in bug_fixes %}
         <li>{{ fix }}</li>
         {% endfor %}
     </ul>
-    <p><b>Thanks to Abbie for testing</b></p>
+    <p>
+        <font color="#9929BD">
+            <b>Thanks to Abbie for testing</b>
+        </font>
+    </p>
 
 </body>
 
