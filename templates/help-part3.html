@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block title %}
+<title>Known Issues</title>
+{% endblock %}
+{% block content %}
+{% include 'help-nav.html' %}
+<div class="content-box help-box">
+    <div class="content-box-title">
+        Known Issues:
+    </div>
+    <p>Below are some known issues that Users have encountered. Hopefully this will help with any issues installing or
+        running QuestCave</p>
+</div>
+<div class="content-box help-box expand">
+    <p>
+        <b>Issue:</b> When I install and try to run QuestCave my Anti Virus Blocks it.
+    </p>
+    <p>
+        <b>Solution:</b> This is a false positive. QuestCave is a Windows application and is not a virus. You can
+        add QuestCave to your Anti Virus Exclusion list or disable your Anti Virus while you are using QuestCave.
+        Below is an example of Microsoft Security alert requesting to allow QuestCave to run. Simply click on the 'more
+        info' link
+        and then click on the 'Run Anyway' button.
+    </p>
+    <div class="help-image-holder">
+        <img src="{{ url_for('static', path='/images/av_flag1.png') }}" alt="">
+    </div>
+    <div class="help-image-holder">
+        <img src="{{ url_for('static', path='/images/av_flag2.png') }}" alt="">
+    </div>
+</div>
+<div class="content-box help-box expand">
+    <p>
+        <b>Issue:</b> I can't get QuestCave to recognize my Quest 2 device.
+    </p>
+    <p>
+        <b>Solution:</b> Read the steps <a href="/help/quest-setup">here</a>
+    </p>
+</div>
+{% endblock %}

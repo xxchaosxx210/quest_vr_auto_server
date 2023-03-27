@@ -49,6 +49,14 @@ async def get_help_questcave_guide(request: Request):
 
 
 @router.get(
+    "/help/faq", response_class=HTMLResponse, status_code=fastapi.status.HTTP_200_OK
+)
+async def get_help_faq(request: Request):
+    context = config.get_context(request)
+    return config.templates.TemplateResponse("help-part3.html", context)
+
+
+@router.get(
     "/download", status_code=fastapi.status.HTTP_200_OK, response_class=HTMLResponse
 )
 async def get_download(request: Request):
