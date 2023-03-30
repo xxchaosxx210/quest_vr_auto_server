@@ -7,7 +7,7 @@ from fastapi.requests import Request
 
 
 NAME = "QuestCave"
-VERSION = "1.0.3"
+VERSION = "1.0.5"
 AUTHOR = "Paul Millar"
 EMAIL = "chaosad@hotmail.co.uk"
 
@@ -18,12 +18,11 @@ DOWNLOAD_LINKS: Dict[str, Dict[str, Any]] = {
         "mirror_url": "https://drive.google.com/file/d/1CfhG5Ae0D1rkG7dNm8wi9Hr0tFy_pgOh/view?usp=sharing",
         "description": {
             "new_features": [
-                "Screen now stays on during the install process",
-                "Version check. QuestCave will now notify when there is a new release",
+                "User now gets notified when new games have been added",
+                "Load new Games only when new Games avalible",
+                "Improvements to the Admin functionality (Admin only",
             ],
-            "bug_fixes": [
-                "adb.exe could not be removed during install and uninstall. Now fixed",
-            ],
+            "bug_fixes": [],
         },
     }
 }
