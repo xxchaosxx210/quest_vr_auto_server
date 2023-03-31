@@ -139,7 +139,7 @@ async def add_game(
     base_games.put(game.dict(exclude={"key"}))
 
 
-@router.delete("/delete/{key}", status_code=fastapi.status.HTTP_204_NO_CONTENT)
+@router.delete("/{key}", status_code=fastapi.status.HTTP_204_NO_CONTENT)
 def delete_game(
     key: str, current_admin: schemas.User = fastapi.Depends(get_current_active_admin)
 ):
@@ -157,4 +157,4 @@ def delete_game(
         raise fastapi.HTTPException(
             fastapi.status.HTTP_404_NOT_FOUND, "Could not find entry in Base"
         )
-    base_games.delete(key)
+    # base_games.delete(key)
