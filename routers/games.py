@@ -157,4 +157,4 @@ def delete_game(
         raise fastapi.HTTPException(
             fastapi.status.HTTP_404_NOT_FOUND, "Could not find entry in Base"
         )
-    # base_games.delete(key)
+    base_games.delete(key)
