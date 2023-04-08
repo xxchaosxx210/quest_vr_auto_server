@@ -106,3 +106,11 @@ class AppLatestVersionResponse(BaseModel):
     url: str
     mirror_url: str
     description: str
+
+
+class ServerInformationResponse(BaseModel):
+    name: str
+    version: str
+    author: str
+    email: EmailStr
+    hostname: str
